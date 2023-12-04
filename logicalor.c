@@ -11,6 +11,9 @@
  * Set up project on local host, set up project on github.
  *
  * Validate input
+ * create a function, bool validInput(char s1, char s2) which makes sure the
+ * char arrays are of the correct length and represent single byte binary
+ * numbers.
  *
 */
 
@@ -18,7 +21,8 @@
 
 /* includes */
 
-
+#include <stdio.h>
+#include <stdbool.h>
 
 
 
@@ -39,7 +43,7 @@
 
 /* function declarations */
 
-
+bool argsAreCorrect(char *s1, char *s2);
 
 
 
@@ -52,29 +56,29 @@ int main(int argc, char *argv[]) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    if(argsAreCorrect(argv[1], argv[2]))
+        printf("Ya!\n");
+    else
+        printf("Not Ya\n");
 
     return(errorCode);
 }
+
+
+/* function definitions */
+
+bool argsAreCorrect(char *s1, char *s2) {
+
+    bool correct;
+
+
+    correct = true;
+
+
+
+
+
+
+    return(correct);
+}
+

@@ -11,3 +11,5 @@ result as a char array of one's and zero's.
 ### 12/03/2023
 set up project on local host, set up project on github.
 
+Input validation
+    Does argv[1], and argv[2] have the correct number of chars?
