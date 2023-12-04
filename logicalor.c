@@ -17,6 +17,7 @@
  *
  * check for number of agrs.
  * check for correct size of each arg.
+ * check that the arges are a sequence of char 1's and 0's.
  *
  *
 */
@@ -50,8 +51,8 @@
 /* function declarations */
 
 bool inputValid(char *s1, char *s2);
-bool byteSized(char *s1);
-
+bool byteSized(char *s);
+bool validBinNum(char *s);
 
 
 int main(int argc, char *argv[]) {
@@ -63,7 +64,7 @@ int main(int argc, char *argv[]) {
 
     if(argc != 3){
         printf("usage: logicalor arg1 arg2\n");
-        exit(0);
+        exit(errorCode);
     }
 
 
@@ -82,7 +83,7 @@ bool inputValid(char *s1, char *s2) {
 
     bool correct;
 
-    correct = true;
+    correct = false;
 
     if(byteSized(s1) && byteSized(s2)){
         printf("args are correct length\n");
@@ -92,6 +93,16 @@ bool inputValid(char *s1, char *s2) {
         printf("args are not the correct length\n");
         correct = false;
     }
+
+    if(validBinNum(s1) && validBinNum(s2)){
+        correct = true;
+        printf("arg1 and arg2 are both valid\n");
+    }
+    else{
+        correct = false;
+        printf("arg1 and arg2 are not both valid\n");
+    }
+
 
     return(correct);
 }
@@ -115,14 +126,22 @@ bool byteSized(char *s){
 
 
 
+bool validBinNum(char *s){
+    bool correct;
+    int index;
+
+    correct = false;
+
+    for(index = 0; *(s + index) != '\0'; ++index){
+        if(*(s + index) == '0' || *(s + index) == '1')
+            correct = true;
+        else{
+            correct = false;
+            break;
+        }
+    }
 
 
-
-
-
-
-
-
-
-
+    return(correct);
+}
 
