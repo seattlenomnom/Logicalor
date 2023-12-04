@@ -15,6 +15,10 @@
  * char arrays are of the correct length and represent single byte binary
  * numbers.
  *
+ * check for number of agrs.
+ * check for correct size of each arg.
+ *
+ *
 */
 
 
@@ -24,6 +28,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <string.h>
 
 
 
@@ -96,9 +101,14 @@ bool inputValid(char *s1, char *s2) {
 bool byteSized(char *s){
 
     bool correct;
-
+    size_t len;
     correct = true;
 
+    len = strlen(s);
+    if(len != CORRECTSIZE)
+        correct = false;
+    else
+        correct = true;
 
     return(correct);
 }
