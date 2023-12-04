@@ -23,6 +23,7 @@
 
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 
 
@@ -31,7 +32,7 @@
 
 /* defines */
 
-
+#define CORRECTSIZE 8
 
 
 
@@ -43,7 +44,8 @@
 
 /* function declarations */
 
-bool argsAreCorrect(char *s1, char *s2);
+bool inputValid(char *s1, char *s2);
+bool byteSized(char *s1);
 
 
 
@@ -54,9 +56,13 @@ int main(int argc, char *argv[]) {
 
     errorCode = 0;
 
+    if(argc != 3){
+        printf("usage: logicalor arg1 arg2\n");
+        exit(0);
+    }
 
 
-    if(argsAreCorrect(argv[1], argv[2]))
+    if(inputValid(argv[1], argv[2]))
         printf("Ya!\n");
     else
         printf("Not Ya\n");
@@ -67,18 +73,46 @@ int main(int argc, char *argv[]) {
 
 /* function definitions */
 
-bool argsAreCorrect(char *s1, char *s2) {
+bool inputValid(char *s1, char *s2) {
 
     bool correct;
 
+    correct = true;
+
+    if(byteSized(s1) && byteSized(s2)){
+        printf("args are correct length\n");
+        correct = true;
+    }
+    else {
+        printf("args are not the correct length\n");
+        correct = false;
+    }
+
+    return(correct);
+}
+
+
+
+bool byteSized(char *s){
+
+    bool correct;
 
     correct = true;
 
 
-
-
-
-
     return(correct);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
