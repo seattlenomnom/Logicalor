@@ -19,6 +19,13 @@
  * check for correct size of each arg.
  * check that the arges are a sequence of char 1's and 0's.
  *
+ * Create a function that takes two arrays of one's and zero's and returns
+ * a new char array that is made up of one's and zero's that represent the
+ * bitwise OR of the original arrays.
+ *
+ * used a two dimensional array as a lookup table. Converted indexes from
+ * char to ints. Several small successes, some insight, made a big success.
+ *
  *
 */
 
@@ -53,6 +60,9 @@
 bool inputValid(char *s1, char *s2);
 bool byteSized(char *s);
 bool validBinNum(char *s);
+void printOR(char *s1, char *s2);
+char tableLookup(char c1, char c2);
+int chartoint(char c);
 
 
 int main(int argc, char *argv[]) {
@@ -69,9 +79,15 @@ int main(int argc, char *argv[]) {
 
 
     if(inputValid(argv[1], argv[2]))
-        printf("Ya!\n");
+        printOR(argv[1], argv[2]);
     else
-        printf("Not Ya\n");
+        printf("input not valid\n");
+
+
+
+
+
+
 
     return(errorCode);
 }
@@ -144,4 +160,68 @@ bool validBinNum(char *s){
 
     return(correct);
 }
+
+
+
+
+
+void printOR(char *s1, char *s2){
+
+    char r[CORRECTSIZE + 1];
+    int index;
+
+    index = 0;
+    for(index = 0; index < CORRECTSIZE; ++index){
+    r[index] = tableLookup(s1[index], s2[index]);
+    }
+    r[CORRECTSIZE] = '\0';
+
+    printf("%s \n", s1);
+    printf("%s \n", s2);
+    printf("%s\n", r);
+
+}
+
+
+
+char tableLookup(char c1, char c2){
+    char result;
+    char table[2][2] = {{'0', '1'}, {'1', '1'}};
+    int x_index, y_index;
+
+    x_index = chartoint(c1);
+    y_index = chartoint(c2);
+
+    result = table[x_index][y_index];
+
+
+
+    return(result);
+
+}
+
+
+int chartoint(char c){
+    int result;
+
+    if(c == '0')
+        result = 0;
+    else
+        result = 1;
+
+    return(result);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 

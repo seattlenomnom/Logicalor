@@ -18,3 +18,15 @@ Input validation
     Does argv[1], and argv[2] have the correct number of chars?
 
     Does argv[1], and argg[2] consist of char 1's and zero's?
+
+Obtaining the bitwise OR of argv[1] and argv[2]
+
+    Don't convert argv[1] and argv[2] into ints, use a lookup talble to 
+
+    generate the result and build the result char binary array. Do an expermnt
+
+    on a temp branch to see if will work. Yes it worked: two dimensional array
+
+    lookup table. To change logical function to bitwise AND, create a separate
+
+    lookup table, very small change.
