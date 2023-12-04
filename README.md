@@ -12,6 +12,9 @@ result as a char array of one's and zero's.
 set up project on local host, set up project on github.
 
 Input validation
+
     Does the program have the correct number of args?
+
     Does argv[1], and argv[2] have the correct number of chars?
+
     Does argv[1], and argg[2] consist of char 1's and zero's?
